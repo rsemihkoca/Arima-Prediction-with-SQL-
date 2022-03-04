@@ -8,6 +8,7 @@ In total over the next 96 days with 0.9 confidence:
      Minimum,    39,308 (12% error)
      Forecasted,  47,228 (23% error)
      Maximum   55,149 (31% error) 
+     Actual 42,764
 
  #of cargos needs to be delivered.
 
