@@ -5,8 +5,8 @@ The purpose of the model is to: Predict the number of couriers required 3 months
 Results:
 In total over the next 96 days with 0.9 confidence:
 
-     Minimum,    39,308 (12% error)
-     Forecasted,  47,228 (23% error)
+     Minimum,    39,308 (13% error)
+     Forecasted,  47,228 (12% error)
      Maximum   55,149 (31% error) 
      Actual 42,764
 
