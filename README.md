@@ -9,4 +9,4 @@ In total over the next 96 days with 0.9 confidence:
      Forecasted,  47,228 (23% error)
      Maximum   55,149 (31% error) 
 
- #of cargo needs to be delivered.
+ #of cargos needs to be delivered.
