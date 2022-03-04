@@ -7,38 +7,38 @@
 -- Go kurye tahmini
 
 -- --Q4 TABLO OLUSTURMA:
--- declare begin_date timestamp default timestamp("2020-06-10 00:00:00.000 UTC");
--- declare end_date timestamp default timestamp("2021-10-08 00:00:00.000 UTC");
+declare begin_date timestamp default timestamp("2020-06-10 00:00:00.000 UTC");
+declare end_date timestamp default timestamp("2021-10-08 00:00:00.000 UTC");
 
--- create or replace table `analytics-bootcamp-2-340509.tbcase.Q4_Time_Series` as (
--- select Date,count(distinct shipment_number) Cargo from (
--- select extract(date from order_date) Date, extract(Year from order_date) as Year,extract(Month from order_date) as Month,extract(Day from order_date) as Day,a.*
--- from 
--- ( 
---     select * 
---     from 
---     (select * from `analytics-bootcamp-2-340509.tbcase.transaction` t JOIN `analytics-bootcamp-2-340509.tbcase.users` u using(user_id)) 
---     where order_date between begin_date and end_date
--- ) a where Platform="Grocery"order by user_id, order_date desc
---  ) group by Date order by 1);
+create or replace table `analytics-bootcamp-2-340509.tbcase.Q4_Time_Series` as (
+select Date,count(distinct shipment_number) Cargo from (
+select extract(date from order_date) Date, extract(Year from order_date) as Year,extract(Month from order_date) as Month,extract(Day from order_date) as Day,a.*
+from 
+( 
+    select * 
+    from 
+    (select * from `analytics-bootcamp-2-340509.tbcase.transaction` t JOIN `analytics-bootcamp-2-340509.tbcase.users` u using(user_id)) 
+    where order_date between begin_date and end_date
+) a where Platform="Grocery"order by user_id, order_date desc
+) group by Date order by 1);
 
 
 #standardSQL
--- CREATE OR REPLACE MODEL `analytics-bootcamp-2-340509.tbcase.Trendyol_ARIMA_Model`
--- OPTIONS
---  (model_type = 'ARIMA_PLUS',
---   time_series_timestamp_col = 'Date',
---   time_series_data_col = 'Cargo',
---   auto_arima = TRUE,
---   data_frequency = 'AUTO_FREQUENCY',
---   decompose_time_series = TRUE,
---   AUTO_ARIMA= TRUE,
---   holiday_region='TR'
+CREATE OR REPLACE MODEL `analytics-bootcamp-2-340509.tbcase.Trendyol_ARIMA_Model`
+OPTIONS
+(model_type = 'ARIMA_PLUS',
+  time_series_timestamp_col = 'Date',
+  time_series_data_col = 'Cargo',
+  auto_arima = TRUE,
+  data_frequency = 'AUTO_FREQUENCY',
+  decompose_time_series = TRUE,
+  AUTO_ARIMA= TRUE,
+  holiday_region='TR'
 
--- ) AS
--- SELECT *
--- FROM
---  `analytics-bootcamp-2-340509.tbcase.Q4_Time_Series` limit 383;
+) AS
+  SELECT *
+  FROM
+  `analytics-bootcamp-2-340509.tbcase.Q4_Time_Series` limit 383;
 
 #standardSQL
 with a as(
