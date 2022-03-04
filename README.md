@@ -10,3 +10,5 @@ In total over the next 96 days with 0.9 confidence:
      Maximum   55,149 (31% error) 
 
  #of cargos needs to be delivered.
+
+<img src="https://raw.githubusercontent.com/rsemihkoca/Arima-Prediction-with-SQL-/main/Results.png">
