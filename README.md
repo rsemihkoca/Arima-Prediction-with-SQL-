@@ -1,4 +1,4 @@
-# The Arima+ model I created using SQL over BigQuery.
+# The Arima+ model I created using SQL over BigQuery for Single Value Time Series Prediction.
 
 The purpose of the model is to: Predict the number of couriers required 3 months in advance by predicting the number of orders to come over the next 96 days.
 
